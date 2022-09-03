@@ -1,7 +1,10 @@
+// CLIENT SIDE JS
+
 const deleteBtn = document.querySelectorAll('.del')
 const todoItem = document.querySelectorAll('span.not')
 const todoComplete = document.querySelectorAll('span.completed')
 
+// EVENT LISTENERS
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteTodo)
 })
@@ -14,6 +17,8 @@ Array.from(todoComplete).forEach((el)=>{
     el.addEventListener('click', markIncomplete)
 })
 
+
+// FUNCTIONS
 async function deleteTodo(){
     const todoId = this.parentNode.dataset.id
     try{

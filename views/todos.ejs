@@ -8,24 +8,38 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <section class="header">
+        <a href="/logout">Logout</a>
+    </section>
 
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
+    <section class="container">
+        <h1>Todos</h1>
+        <h3>Welcome <%= user.userName %></h3>
 
-    <a href="/logout">Logout</a>
+        <form action="/todos/createTodo" method='POST'>
+            <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+            <input type="text" placeholder="Enter due date" name='todoDueDate'>
+            <input type="submit">
+        </form>
+
+        <ul class="toDoCards">
+        <% todos.forEach( el => { %>
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'> Activity: <%= el.todo %></span>
+            
+                    <span class="">Due Date: <%= el.dueDate %></span>
+                  
+                    <span class='del'> Delete </span>
+                    <span class='edit'> Edit </span>
+                </li>
+        <% }) %>    
+        </ul>
+
+        <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+
+    </section>
+
 
     <script src="js/main.js"></script>
 </body>
