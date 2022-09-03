@@ -56,5 +56,24 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
+    }, 
+
+
+    updateTodo: async (req, res)=>{
+        console.log(req.body.todoIdFromJSFile)
+        try{
+            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile}, {
+                
+                $set: {
+                    todo: req.body.newNote,
+                },
+
+            })
+            console.log('Updated Todo')
+            res.json('Updated It')
+        }catch(err){
+            console.log(err)
+        }
     }
+
 }    
